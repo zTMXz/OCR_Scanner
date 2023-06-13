@@ -8,6 +8,7 @@ class Scanner(models.Model):
     image = models.ImageField(upload_to='users/%Y/%m/%d', blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recognition = models.TextField(blank=True)
+    recognition_extended = models.TextField(blank=True)
 
     def get_absolute_url(self):
         return reverse('scanner:image_upload_success', kwargs={'id': self.id})
