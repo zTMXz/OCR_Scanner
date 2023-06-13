@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 
 #from OCR_Scanner.settings import DEFAULT_FROM_EMAIL
 from users.forms import UserCreationForm, UserUpdateForm
-from scanner.models import ScanHistory
+from scanner.models import Scanner
 
 
 class Register(View):
@@ -58,7 +58,7 @@ def profile(request):
     if not request.user.is_authenticated:
         return redirect("login")
 
-    scan_history = ScanHistory.objects.filter(user=request.user).order_by('-id')
+    scan_history = Scanner.objects.filter(user=request.user).order_by('-id')
     paginator = Paginator(scan_history, 5)
     page_number = request.GET.get('page')
     scan_history = paginator.get_page(page_number)
