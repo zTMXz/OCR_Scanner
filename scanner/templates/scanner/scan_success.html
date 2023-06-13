@@ -14,12 +14,13 @@
 
         <h1 class="promo" style="text-align: center; margin-bottom: 30px">{% trans 'Scan your documents here' %}</h1>
 
-            <h3>Succesfully uploaded : {{ scanner.description }}</h3>
-            <img src="{{ scanner.image.url }}" alt="connect" style="max-height:300px">
-            <textarea name="result" cols="40" rows="10" id="id_result"> {{ scanner.recognition }}</textarea>
+        <h3>Succesfully uploaded : {{ scanner.description }}</h3>
+        <img src="{{ scanner.image.url }}" alt="connect" style="max-height:300px">
+        <textarea name="result" cols="40" rows="10" id="id_result"> {{ scanner.recognition }}</textarea>
+        <textarea name="result" cols="40" rows="10" id="id_result" readonly> {{ scanner.recognition_extended }}</textarea>
 
-            <p> =============================== </p>
-            <p>{{ img }}</p>
+        <p> =============================== </p>
+        <p>{{ img }}</p>
 
     </div>
 {% endblock %}
