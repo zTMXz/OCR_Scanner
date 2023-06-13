@@ -18,7 +18,7 @@ import environ
 from PIL.ImageOps import scale
 
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_env(".env")
 
 from pathlib import Path
 
