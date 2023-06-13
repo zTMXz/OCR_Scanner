@@ -110,7 +110,7 @@ ENV/
 env.bak/
 venv.bak/
 
-media/users/driver_license
+media/users/
 
 # Spyder project settings
 .spyderproject
@@ -129,3 +129,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/media/users/2023/

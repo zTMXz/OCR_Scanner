@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% load widget_tweaks %}
+
+{% block title %} {% trans 'Profile' %} {% endblock %}
+
+{% block style_css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type='text/css' href="{% static 'css/profile_page.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div style="margin-top: 20px;">
+        <h2>Profile</h2>
+        <div class="container-fluid">
+            {% if user.is_authenticated %}
+                <form action="{% url 'profile' %}" method="post">{% csrf_token %}
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-sm-3">
+                            <label for="Email">Email</label>
+                        </div>
+                        <div class="col-sm-9" id="Email">
+                            <input class="form-control" type="text" id="Email" name="email" readonly
+                                   style="width: 250px; text-align: left; cursor: pointer;"
+                                   value={{ user.email }}>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-sm-3">
+                            <label for="id_first_name">{% trans 'First Name' %}</label>
+                        </div>
+                        <div class="col-sm-9" id="FirstName">
+                            <input style="width: 250px" class="form-control" type="text" name="first_name"
+                                   id="id_first_name" placeholder="{% trans "First Name" %}"
+                                   value={{ user.first_name }}>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-sm-3">
+                            <label for="id_last_name">{% trans 'Last Name' %}</label>
+                        </div>
+                        <div class="col-sm-9" id="LastName">
+                            <input style="width: 250px" class="form-control" type="text" name="last_name"
+                                   id="id_last_name" placeholder="{% trans "Last Name" %}"
+                                   value={{ user.last_name }}>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px">
+                        <div class="col-sm-3">
+                            <label for=""></label>
+                        </div>
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-info btn-outline-secondary"
+                                    style="background: #1d9444; color: white">{% trans "Submit" %}</button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            {% endif %}
+        </div>
+
+        <div>
+            <h2 style="margin-top: 40px">{% trans 'Scan History' %}</h2>
+
+            <table class="table" id="table" style="width: 90%; margin: auto">
+                <thead>
+                <tr>
+                    <th class="col-md-4">{% trans 'Image' %}</th>
+                    <th class="col-md-2">{% trans 'Description' %}</th>
+                    <th class="col-md-4">{% trans 'Recognition' %}</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% if scan_history %}
+                    {% for scan in scan_history %}
+                        <tr>
+                            <td class="col-md-4">
+                                <img class="table-image" src="
+                                {% if scan.image %}
+                                    {{ scan.image }}
+                                {% endif %}">
+                            </td>
+                            <td class="col-md-2">
+                                {{ scan.description }}
+                            </td>
+                            <td class="col-md-4">
+                                {{ scan.recognition }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                {% else %}
+                    <tr>
+                        <td class="col-md-12 text-center" colspan="4">
+                            {% trans 'NO items to display' %}
+                        </td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+
+            <nav class="page-navigation" aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item">
+                        {% if scan_history.has_previous %}
+                            <a class="page-link" href="?page={{ scan_history.previous_page_number }}"
+                               aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        {% else %}
+                            <div class="page-link disabled"><span>&laquo;</span></div>
+                        {% endif %}
+                    </li>
+                    {% for i in scan_history.paginator.page_range %}
+                        {% if scan_history.number == i %}
+                            <li class="active page-item"><span class="page-link">{{ i }}</span></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    <li class="page-item">
+                        {% if scan_history.has_next %}
+                            <a class="page-link" href="?page={{ scan_historys.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        {% else %}
+                            <div class="page-link disabled"><span>&raquo;</span></div>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+{% endblock %}
