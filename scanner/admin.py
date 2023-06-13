@@ -1,5 +1,3 @@
-from idlelib.history import History
-
 from django.contrib import admin
 from .models import Scanner, ScanHistory
 
