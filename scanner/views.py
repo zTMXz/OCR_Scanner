@@ -1,35 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import CreateView, DetailView
+
 from .forms import ScannerForm
-from .models import ScanHistory
-
-import easyocr
-
-try:
-    from PIL import Image
-except:
-    import Image
+from .models import Scanner
+from scanner.text_recognition import scan_image
 
 
-# Create your views here.
-def image_upload(request):
-    reader = easyocr.Reader(['en'])
+class ImageUpload(CreateView):
+    template_name = 'scanner/scan.html'
+    form_class = ScannerForm
 
-    if request.method == 'POST':
-        form = ScannerForm(request.POST, request.FILES)
-        if form.is_valid():
-            scan_request = form.save(commit=False)
-            scan_request.user = request.user
-            scan_request.save()
+    def form_valid(self, form):
+        img_obj = form.instance.image
 
-            img_obj = form.instance
-            print(img_obj.image.url)
-            result = reader.readtext('C:/Users/erekh/PycharmProjects/OCR_Scanner' + img_obj.image.url,
-                                     detail=0, paragraph=True)[0]
+        form.instance.user = self.request.user
+        form.save()
 
-            ScanHistory.objects.create(user=request.user, description=scan_request.description, image=img_obj.image.url,
-                                       recognition=result)
+        form.instance.recognition, form.instance.recognition_extended = scan_image(img_obj.url)
+        form.save()
 
-            return render(request, 'scanner/scan.html', {'form': form, 'img_obj': img_obj, 'result': result})
-    else:
-        form = ScannerForm()
-    return render(request, 'scanner/scan.html', {'form': form})
+        return super().form_valid(form)
+
+
+class ImageUploadDetail(DetailView):
+    template_name = 'scanner/scan_success.html'
+    model = Scanner
+    def get_object(self):
+        id_ = self.kwargs.get('id')
+        return get_object_or_404(Scanner, id=id_)
