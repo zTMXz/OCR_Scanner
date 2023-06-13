@@ -1,6 +1,8 @@
 import easyocr
+import os
 
 def scan_image(img_path: str):
     reader = easyocr.Reader(['en'])
-    return reader.readtext('C:/Users/erekh/PycharmProjects/OCR_Scanner' + img_path,
+    print('---', os.path.abspath(os.curdir))
+    return reader.readtext(os.path.abspath(os.curdir) + '\\' + img_path,
                              detail=0, paragraph=True)[0]
