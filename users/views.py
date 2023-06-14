@@ -44,6 +44,7 @@ Your login details:
                       from_email=EMAIL_HOST_USER
                       )
 
+
             return redirect('home')
 
         context = {
@@ -78,3 +79,17 @@ class Profile(View):
         if form.is_valid():
             form.save()
             return redirect('profile')
+
+
+def delete_one(request, scan_id):
+    item = Scanner.objects.get(id=scan_id)
+    item.delete()
+    return redirect('profile')
+
+def delete_all(request):
+    Scanner.objects.filter(user=request.user).delete()
+    return redirect('profile')
+
+
+
+
