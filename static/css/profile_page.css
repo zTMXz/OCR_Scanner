@@ -1,0 +1,21 @@
+.page-item .page-link {
+    color: #076f96;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #1d9444;
+    border-color: #1d9444;
+}
+
+.page-navigation {
+    display: flex;
+    justify-content: center;
+}
+
+input:active, input:focus,
+a:active, a:focus {
+    outline: 0 !important;
+    box-shadow: 0 0 0 0 rgba(29, 148, 68, 1) !important;
+}

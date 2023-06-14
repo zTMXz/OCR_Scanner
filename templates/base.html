@@ -1,0 +1,137 @@
+{% load static i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block meta %}{% endblock %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    {#    <link rel="shortcut icon" type="image/png" href="{% static 'img/fav.png' %}"/>#}
+    <link rel="stylesheet" href="{% static 'css/base_css.css' %}">
+
+    <title>{% block title %}{% trans 'DockieScanner' %}{% endblock %}</title>
+    {% block style_css %}{% endblock %}
+    {% block head %}{% endblock %}
+    <style>
+
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-height: 60px; margin-bottom: 20px">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">DockieScanner</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">{% trans 'Home' %}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'scanner:image_upload' %}">{% trans 'Scan' %}</a>
+                </li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown" style="position: absolute; cursor: pointer; right: 25px;">
+                        <div class="nav-link dropdown-toggle-split" id="navbarDropdown" style="margin-bottom: 0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#525252"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <a xlink:href="{% url 'profile' %}">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path fill-rule="evenodd"
+                                          d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                                </a>
+                            </svg>
+                        </div>
+
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown"
+                             style="min-width: 5rem; right: 0; left: auto">
+
+
+                            <a class="dropdown-item" href="{% url 'profile' %}">{% trans "Settings" %}</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">{% trans "Sign Out" %}</a>
+                            {% if user.is_superuser %}
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" href="{% url 'admin:index' %}"
+                                   target="_blank">{% trans "Admin Panel" %}</a>
+                            {% endif %}
+                            <hr class="dropdown-divider">
+                            <div class="dropdown-item" style="padding-left: 32px; padding-top: 2px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
+                                     width="20" height="20" x="0" y="0" viewBox="0 0 510 510"
+                                     style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                        <a xlink:href="/ru/{{ request.get_full_path|slice:"4:" }}">
+                                            <g><circle cx="256" cy="256" r="256" fill="#f0f0f0" data-original="#f0f0f0" class=""></circle>
+                                                <path
+                                                        fill="#0052b4"
+                                                        d="M496.077 345.043C506.368 317.31 512 287.314 512 256s-5.632-61.31-15.923-89.043H15.923C5.633 194.69 0 224.686 0 256s5.633 61.31 15.923 89.043L256 367.304z"
+                                                        data-original="#0052b4" class="">
+                                                </path>
+                                                <path fill="#d80027"
+                                                      d="M256 512c110.071 0 203.906-69.472 240.077-166.957H15.923C52.094 442.528 145.929 512 256 512z"
+                                                      data-original="#d80027"
+                                                      class="">
+                                                </path>
+                                            </g>
+                                        </a>
+                                    </svg>
+                                |
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"
+                                     width="20" height="20" x="0" y="0" viewBox="0 0 512 512"
+                                     style="enable-background:new 0 0 512 512" xml:space="preserve">
+                                        <a href="/en/{{ request.get_full_path|slice:"4:" }}">
+                                            <g><circle cx="256" cy="256" r="256" fill="#f0f0f0" data-original="#f0f0f0"></circle>
+                                                <g fill="#0052b4"><path d="M52.92 100.142c-20.109 26.163-35.272 56.318-44.101 89.077h133.178zM503.181 189.219c-8.829-32.758-23.993-62.913-44.101-89.076l-89.075 89.076zM8.819 322.784c8.83 32.758 23.993 62.913 44.101 89.075l89.074-89.075zM411.858 52.921c-26.163-20.109-56.317-35.272-89.076-44.102v133.177zM100.142 459.079c26.163 20.109 56.318 35.272 89.076 44.102V370.005zM189.217 8.819c-32.758 8.83-62.913 23.993-89.075 44.101l89.075 89.075zM322.783 503.181c32.758-8.83 62.913-23.993 89.075-44.101l-89.075-89.075zM370.005 322.784l89.075 89.076c20.108-26.162 35.272-56.318 44.101-89.076z" fill="#0052b4" data-original="#0052b4"></path></g>
+                                                <g fill="#d80027"><path d="M509.833 222.609H289.392V2.167A258.556 258.556 0 0 0 256 0c-11.319 0-22.461.744-33.391 2.167v220.441H2.167A258.556 258.556 0 0 0 0 256c0 11.319.744 22.461 2.167 33.391h220.441v220.442a258.35 258.35 0 0 0 66.783 0V289.392h220.442A258.533 258.533 0 0 0 512 256c0-11.317-.744-22.461-2.167-33.391z" fill="#d80027" data-original="#d80027"></path>
+                                                    <path d="M322.783 322.784 437.019 437.02a256.636 256.636 0 0 0 15.048-16.435l-97.802-97.802h-31.482zM189.217 322.784h-.002L74.98 437.019a256.636 256.636 0 0 0 16.435 15.048l97.802-97.804zM189.217 189.219v-.002L74.981 74.98a256.636 256.636 0 0 0-15.048 16.435l97.803 97.803h31.481zM322.783 189.219 437.02 74.981a256.328 256.328 0 0 0-16.435-15.047l-97.802 97.803z"
+                                                          fill="#d80027" data-original="#d80027"></path>
+                                                </g>
+                                            </g>
+                                        </a>
+                                    </svg>
+                            </div>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item" style="position: absolute; right: 30px">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                 class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                                <path fill-rule="evenodd"
+                                      d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                            </svg>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+{% block script %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+{% endblock %}
+
+</body>
+</html>

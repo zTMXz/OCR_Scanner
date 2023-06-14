@@ -1,0 +1,222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-11 18:54+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\templates\base.html:20
+msgid "DockieScanner"
+msgstr "ДокиСканер"
+
+#: .\templates\base.html:39 .\templates\home.html:4
+msgid "Home"
+msgstr "Главная"
+
+#: .\templates\base.html:60
+msgid "Settings"
+msgstr "Настройки"
+
+#: .\templates\base.html:61
+msgid "Sign Out"
+msgstr "Выйти"
+
+#: .\templates\base.html:65
+msgid "Admin Panel"
+msgstr "Админ панель"
+
+#: .\templates\home.html:49
+msgid "Promotions and Offers"
+msgstr ""
+
+#: .\templates\registration\login.html:11
+msgid "Sign In"
+msgstr "Вход"
+
+#: .\templates\registration\login.html:26
+#: .\templates\registration\login.html:42
+#: .\templates\registration\register.html:27
+msgid "Sign in"
+msgstr "Войти"
+
+#: .\templates\registration\login.html:26
+#: .\templates\registration\register.html:26
+#: .\templates\registration\register.html:47
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: .\templates\registration\login.html:34
+msgid "Forgot password"
+msgstr "Забыли пароль"
+
+#: .\templates\registration\login.html:41
+msgid "Remember me"
+msgstr "Запомнить меня"
+
+#: .\templates\registration\password_reset_done.html:8
+#: .\templates\registration\password_reset_done.html:11
+msgid "Password Reset Done"
+msgstr "Сброс пароля выполнен успешно"
+
+#: .\templates\registration\password_reset_done.html:13
+msgid ""
+"We’ve emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: .\templates\registration\password_reset_done.html:14
+msgid ""
+"If you don’t receive an email, please make sure you’ve entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: .\templates\registration\password_reset_done.html:16
+msgid "You will be redirected in few seconds.."
+msgstr ""
+
+#: .\templates\registration\password_reset_form.html:5
+msgid "Password Reset Form"
+msgstr ""
+
+#: .\templates\registration\password_reset_form.html:18
+msgid "Password Reset"
+msgstr ""
+
+#: .\templates\registration\password_reset_form.html:30
+#: .\templates\registration\profile.html:57
+msgid "Submit"
+msgstr ""
+
+#: .\templates\registration\profile.html:5
+msgid "Profile"
+msgstr ""
+
+#: .\templates\registration\profile.html:31
+#: .\templates\registration\profile.html:35
+msgid "First Name"
+msgstr ""
+
+#: .\templates\registration\profile.html:42
+#: .\templates\registration\profile.html:46
+msgid "Last Name"
+msgstr ""
+
+#: .\templates\registration\profile.html:68
+msgid "Order History"
+msgstr ""
+
+#: .\templates\registration\profile.html:73
+msgid "Product"
+msgstr ""
+
+#: .\templates\registration\profile.html:74
+msgid "Price per 1"
+msgstr ""
+
+#: .\templates\registration\profile.html:75
+msgid "Quantity"
+msgstr ""
+
+#: .\templates\registration\profile.html:76
+msgid "Date"
+msgstr ""
+
+#: .\templates\registration\profile.html:105
+msgid "NO items to display"
+msgstr ""
+
+#: .\templates\registration\profile.html:115
+msgid "first"
+msgstr ""
+
+#: .\templates\registration\profile.html:116
+msgid "previous"
+msgstr ""
+
+#: .\templates\registration\profile.html:120
+msgid "Page"
+msgstr ""
+
+#: .\templates\registration\profile.html:120
+msgid "of"
+msgstr ""
+
+#: .\templates\registration\profile.html:124
+msgid "next"
+msgstr ""
+
+#: .\templates\registration\profile.html:125
+msgid "last"
+msgstr ""
+
+#: .\templates\registration\register.html:11
+msgid "Sign Up"
+msgstr ""
+
+#: .\templates\registration\register.html:38
+msgid "Password"
+msgstr ""
+
+#: .\templates\registration\register.html:43
+msgid "Confirm Password"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:220
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:229
+msgid "Django Documentation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:238
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
+msgid "Get started with Django"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:247
+msgid "Django Community"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
+msgid "Connect, get help, or contribute"
+msgstr ""
