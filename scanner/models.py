@@ -10,6 +10,9 @@ class Scanner(models.Model):
     recognition = models.TextField(blank=True)
     recognition_extended = models.TextField(blank=True)
 
+    def __str__(self):
+        return ' '.join([self.user.username, self.description[:11]])
+
     def get_absolute_url(self):
         return reverse('scanner:image_upload_success', kwargs={'id': self.id})
 
