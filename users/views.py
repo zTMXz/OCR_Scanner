@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.views import View
 from django.core.paginator import Paginator
 
-#from OCR_Scanner.settings import DEFAULT_FROM_EMAIL
+from OCR_Scanner.settings import DEFAULT_FROM_EMAIL
 from users.forms import UserCreationForm, UserUpdateForm
 from scanner.models import Scanner
 
@@ -30,23 +30,21 @@ class Register(View):
             user = authenticate(username=username, password=password)
             print(form)
             login(request, user)
-#
-#             send_mail(subject='Successful Registration Message',
-# message= f"""
-# You have successfully registered on EV_Rent
-# Your login details:
-# ===============================
-#     username: {username}
-#     password: {password}
-# ===============================
-# """,
-#                       recipient_list=[email],
-#                       from_email=DEFAULT_FROM_EMAIL
-#                       )
+
+            send_mail(subject='Successful Registration Message',
+message= f"""
+You have successfully registered on DockieScanner
+Your login details:
+===============================
+    username: {username}
+    password: {password}
+===============================
+""",
+                      recipient_list=[email],
+                      from_email=DEFAULT_FROM_EMAIL
+                      )
 
             return redirect('home')
-
-
 
         context = {
             'form': form
