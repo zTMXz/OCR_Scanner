@@ -19,7 +19,7 @@ class Register(View):
         return render(request, self.template_name, context)
 
     def post(self, request):
-        form = UserCreationForm(request.POST, request.FILES)
+        form = UserCreationForm(request.POST)
 
         if form.is_valid():
             form.save()
@@ -54,24 +54,29 @@ class Register(View):
         return render(request, self.template_name, context)
 
 
-def profile(request):
-    if not request.user.is_authenticated:
-        return redirect("login")
+class Profile(View):
+    template_name = 'registration/profile.html'
 
-    scan_history = Scanner.objects.filter(user=request.user).order_by('-id')
-    paginator = Paginator(scan_history, 5)
-    page_number = request.GET.get('page')
-    scan_history = paginator.get_page(page_number)
+    def get(self, request):
+        if not request.user.is_authenticated:
+            return redirect("login")
 
+        scan_history = Scanner.objects.filter(user=request.user).order_by('-id')
+        paginator = Paginator(scan_history, 5)
+        page_number = request.GET.get('page')
+        scan_history = paginator.get_page(page_number)
 
-    form = UserUpdateForm(request.POST, instance=request.user)
-    if form.is_valid():
-        form.save()
-        return redirect('profile')
+        context = {
+            "form": UserUpdateForm(),
+            "scan_history": scan_history
+        }
+        return render(request, self.template_name, context)
 
-    context = {
-        "form": form,
-        "scan_history": scan_history
-    }
+    def post(self, request):
+        if not request.user.is_authenticated:
+            return redirect("login")
 
-    return render(request, template_name="registration/profile.html", context=context)
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
