@@ -66,19 +66,20 @@
         </div>
 
         <div>
-            <h2 style="margin-top: 40px">{% trans 'Scan History' %}</h2>
+            {% if scan_history %}
+                <h2 style="margin-top: 40px">{% trans 'Scan History' %}</h2>
 
-            <table class="table" id="table" style="width: 90%; margin: auto">
-                <thead>
-                <tr>
-                    <th class="col-md-4">{% trans 'Image' %}</th>
-                    <th class="col-md-2">{% trans 'Description' %}</th>
-                    <th class="col-md-4">{% trans 'Recognition' %}</th>
-                </tr>
-                </thead>
+                <table class="table" id="table" style="width: 90%; margin: auto">
+                    <thead>
+                    <tr>
+                        <th class="col-md-4">{% trans 'Image' %}</th>
+                        <th class="col-md-2">{% trans 'Description' %}</th>
+                        <th class="col-md-4">{% trans 'Recognition' %}</th>
+                    </tr>
+                    </thead>
 
-                <tbody>
-                {% if scan_history %}
+                    <tbody>
+
                     {% for scan in scan_history %}
                         <tr>
                             <td class="col-md-4">
@@ -96,47 +97,50 @@
                         </tr>
                     {% endfor %}
 
-                {% else %}
-                    <tr>
-                        <td class="col-md-12 text-center" colspan="4">
-                            {% trans 'NO items to display' %}
-                        </td>
-                    </tr>
-                {% endif %}
-                </tbody>
-            </table>
+                    {#                {% else %}#}
+                    {#                    <tr>#}
+                    {#                        <td class="col-md-12 text-center" colspan="4">#}
+                    {#                            {% trans 'NO items to display' %}#}
+                    {#                        </td>#}
+                    {#                    </tr>#}
 
-            <nav class="page-navigation" aria-label="Page navigation">
-                <ul class="pagination">
-                    <li class="page-item">
-                        {% if scan_history.has_previous %}
-                            <a class="page-link" href="?page={{ scan_history.previous_page_number }}"
-                               aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        {% else %}
-                            <div class="page-link disabled"><span>&laquo;</span></div>
-                        {% endif %}
-                    </li>
-                    {% for i in scan_history.paginator.page_range %}
-                        {% if scan_history.number == i %}
-                            <li class="active page-item"><span class="page-link">{{ i }}</span></li>
-                        {% else %}
-                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-                        {% endif %}
-                    {% endfor %}
-                    <li class="page-item">
-                        {% if scan_history.has_next %}
-                            <a class="page-link" href="?page={{ scan_historys.next_page_number }}" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        {% else %}
-                            <div class="page-link disabled"><span>&raquo;</span></div>
-                        {% endif %}
-                    </li>
-                </ul>
-            </nav>
-        </div>
+                    </tbody>
+                </table>
+
+
+                <nav class="page-navigation" aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            {% if scan_history.has_previous %}
+                                <a class="page-link" href="?page={{ scan_history.previous_page_number }}"
+                                   aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            {% else %}
+                                <div class="page-link disabled"><span>&laquo;</span></div>
+                            {% endif %}
+                        </li>
+                        {% for i in scan_history.paginator.page_range %}
+                            {% if scan_history.number == i %}
+                                <li class="active page-item"><span class="page-link">{{ i }}</span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="page-item">
+                            {% if scan_history.has_next %}
+                                <a class="page-link" href="?page={{ scan_historys.next_page_number }}"
+                                   aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            {% else %}
+                                <div class="page-link disabled"><span>&raquo;</span></div>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
+                </div>
+            {% endif %}
 
     </div>
 {% endblock %}
