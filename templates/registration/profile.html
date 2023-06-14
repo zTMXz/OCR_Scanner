@@ -69,12 +69,21 @@
             {% if scan_history %}
                 <h2 style="margin-top: 40px">{% trans 'Scan History' %}</h2>
 
+
+
                 <table class="table" id="table" style="width: 90%; margin: auto">
                     <thead>
                     <tr>
-                        <th class="col-md-4">{% trans 'Image' %}</th>
+                        <th class="col-md-2">{% trans 'Image' %}</th>
                         <th class="col-md-2">{% trans 'Description' %}</th>
                         <th class="col-md-4">{% trans 'Recognition' %}</th>
+                        <th class="col-md-2">{% trans 'Link' %}</th>
+                        <th class="col-md-2">
+                            <form method="POST" action="{% url 'delete_all' %}">
+                                {% csrf_token %}
+                                <button type="submit">{% trans 'Remove all' %}</button>
+                            </form>
+                        </th>
                     </tr>
                     </thead>
 
@@ -82,17 +91,27 @@
 
                     {% for scan in scan_history %}
                         <tr>
-                            <td class="col-md-4">
+                            <td class="col-md-2">
                                 <img class="table-image" src="
                                 {% if scan.image %}
                                     {{ scan.image.url }}
-                                {% endif %}">
+                                {% endif %}" style="width: 300px">
                             </td>
                             <td class="col-md-2">
                                 {{ scan.description }}
                             </td>
-                            <td class="col-md-4">
+                            <td class="col-md-4" style="font-size: 14px">
                                 {{ scan.recognition }}
+                            </td>
+                            <td class="col-md-2">
+                                <a href="{{ scan.get_absolute_url }}"> {% trans 'More information' %} </a>
+                            </td>
+                            <td class="col-md-2">
+                                <form method="post" action="{% url 'delete_one' scan_id=scan.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit">{% trans 'Delete' %}</button>
+                                    <p>Заменить на иконку!</p>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}
