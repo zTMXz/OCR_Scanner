@@ -9,6 +9,26 @@
 {% endblock %}
 
 {% block content %}
+    <style>
+        #loading-icon {
+            {#display: none; /* Initially hide the loading icon */#}
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1d9444;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 
     <div class="container">
 
@@ -17,18 +37,25 @@
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Upload</button>
+            <button type="submit" id="add-button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Upload</button>
         </form>
 
-        {% if img_obj %}
-            <h3>Succesfully uploaded : {{ img_obj.title }}</h3>
-            <img src="{{ img_obj.image.url }}" alt="connect" style="max-height:300px">
-            <textarea name="result" cols="40" rows="10" id="id_result"> {{ result }}</textarea>
 
-            <p> =============================== </p>
-            <p>{{ img }}</p>
-        {% endif %}
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="display: flex; justify-content: center">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{% trans 'Loading' %}..</h1>
+                    </div>
 
+                    <div class="modal-body" style="display: flex; justify-content: center">
+                        <div id="loading-icon"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -36,5 +63,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
             integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
             crossorigin="anonymous"></script>
-
 {% endblock %}
