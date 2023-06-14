@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
-from django.core.mail import send_mail, BadHeaderError
-from django.shortcuts import render, redirect, HttpResponse
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
 
