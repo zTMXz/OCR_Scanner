@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
 
-from OCR_Scanner.settings import DEFAULT_FROM_EMAIL
+from OCR_Scanner.settings import EMAIL_HOST_USER
 from users.forms import UserCreationForm, UserUpdateForm
 from scanner.models import Scanner
 
@@ -41,7 +41,7 @@ Your login details:
 ===============================
 """,
                       recipient_list=[email],
-                      from_email=DEFAULT_FROM_EMAIL
+                      from_email=EMAIL_HOST_USER
                       )
 
             return redirect('home')
