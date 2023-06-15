@@ -65,11 +65,9 @@
             {% endif %}
         </div>
 
-        <div>
-            {% if scan_history %}
+        {% if scan_history %}
+            <div>
                 <h2 style="margin-top: 40px">{% trans 'Scan History' %}</h2>
-
-
 
                 <table class="table" id="table" style="width: 90%; margin: auto">
                     <thead>
@@ -88,7 +86,6 @@
                     </thead>
 
                     <tbody>
-
                     {% for scan in scan_history %}
                         <tr>
                             <td class="col-md-2">
@@ -115,14 +112,6 @@
                             </td>
                         </tr>
                     {% endfor %}
-
-                    {#                {% else %}#}
-                    {#                    <tr>#}
-                    {#                        <td class="col-md-12 text-center" colspan="4">#}
-                    {#                            {% trans 'NO items to display' %}#}
-                    {#                        </td>#}
-                    {#                    </tr>#}
-
                     </tbody>
                 </table>
 
@@ -158,8 +147,7 @@
                         </li>
                     </ul>
                 </nav>
-                </div>
-            {% endif %}
-
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
