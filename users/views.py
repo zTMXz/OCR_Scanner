@@ -4,9 +4,14 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
 
-from OCR_Scanner.settings import EMAIL_HOST_USER
 from users.forms import UserCreationForm, UserUpdateForm
 from scanner.models import Scanner
+
+import os
+
+
+if os.environ.get('EMAIL_HOST_USER', default=None):
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 
 
 class Register(View):
@@ -30,6 +35,7 @@ class Register(View):
             user = authenticate(username=username, password=password)
             print(form)
             login(request, user)
+            print(EMAIL_HOST_USER)
 
             send_mail(subject='Successful Registration Message',
 message= f"""

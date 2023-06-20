@@ -45,8 +45,11 @@ EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+if env.get_value('EMAIL_HOST_USER', default=None):
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+
+if env.get_value('EMAIL_HOST_PASSWORD', default=None):
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 
 # Application definition
