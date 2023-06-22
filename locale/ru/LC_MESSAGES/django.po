@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-11 18:54+0300\n"
+"POT-Creation-Date: 2023-06-22 14:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,29 +20,79 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: .\scanner\templates\scanner\scan.html:4
+msgid "Scan docs"
+msgstr "Скан документов"
+
+#: .\scanner\templates\scanner\scan.html:16 .\templates\home.html:15
+msgid "Scan your documents here"
+msgstr "Отсканируйте ваши документы здесь"
+
+#: .\scanner\templates\scanner\scan.html:20
+#: .\templates\registration\profile.html:67
+msgid "Description"
+msgstr "Описание"
+
+#: .\scanner\templates\scanner\scan.html:22
+msgid "Example: important contract"
+msgstr "Например: важный контракт"
+
+#: .\scanner\templates\scanner\scan.html:24
+msgid "Upload your photo"
+msgstr "Загрузите свое фото"
+
+#: .\scanner\templates\scanner\scan.html:28
+msgid "Upload"
+msgstr "Загрузить"
+
+#: .\scanner\templates\scanner\scan.html:38
+msgid "Loading"
+msgstr "Загрузка"
+
+#: .\scanner\templates\scanner\scan_success.html:4 .\templates\base.html:39
+#: .\templates\home.html:4
+msgid "Home"
+msgstr "Главная"
+
+#: .\scanner\templates\scanner\scan_success.html:16
+msgid "Succesfully uploaded"
+msgstr "Успешно загружено"
+
+#: .\scanner\templates\scanner\scan_success.html:19
+msgid "Your image"
+msgstr "Ваше изображение"
+
+#: .\scanner\templates\scanner\scan_success.html:22
+msgid "Recognition result"
+msgstr "Результат распознавания"
+
+#: .\scanner\templates\scanner\scan_success.html:28
+msgid "Phrase"
+msgstr "Фрагмент"
+
+#: .\scanner\templates\scanner\scan_success.html:29
+msgid "Accuracy"
+msgstr "Точность"
+
 #: .\templates\base.html:20
 msgid "DockieScanner"
 msgstr "ДокиСканер"
 
-#: .\templates\base.html:39 .\templates\home.html:4
-msgid "Home"
-msgstr "Главная"
+#: .\templates\base.html:43
+msgid "Scan"
+msgstr "Сканер"
 
-#: .\templates\base.html:60
+#: .\templates\base.html:64
 msgid "Settings"
 msgstr "Настройки"
 
-#: .\templates\base.html:61
+#: .\templates\base.html:65
 msgid "Sign Out"
 msgstr "Выйти"
 
-#: .\templates\base.html:65
+#: .\templates\base.html:69
 msgid "Admin Panel"
 msgstr "Админ панель"
-
-#: .\templates\home.html:49
-msgid "Promotions and Offers"
-msgstr ""
 
 #: .\templates\registration\login.html:11
 msgid "Sign In"
@@ -78,103 +128,84 @@ msgid ""
 "We’ve emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
 msgstr ""
+"Мы выслали вам инструкцию для установки нового пароля, если ваш аккаунт "
+"существует и привязан к данной почте"
 
 #: .\templates\registration\password_reset_done.html:14
 msgid ""
 "If you don’t receive an email, please make sure you’ve entered the address "
 "you registered with, and check your spam folder."
 msgstr ""
+"Если вы не получили сообщение, убедитесь, что вы указали верный адрес "
+"электронной почты или проверьте папку СПАМ"
 
 #: .\templates\registration\password_reset_done.html:16
 msgid "You will be redirected in few seconds.."
-msgstr ""
+msgstr "Сейчас вы будете перенаправлены.."
 
 #: .\templates\registration\password_reset_form.html:5
 msgid "Password Reset Form"
-msgstr ""
+msgstr "Сброс пароля"
 
 #: .\templates\registration\password_reset_form.html:18
 msgid "Password Reset"
-msgstr ""
+msgstr "Сброс пароля"
 
 #: .\templates\registration\password_reset_form.html:30
-#: .\templates\registration\profile.html:57
+#: .\templates\registration\profile.html:52
 msgid "Submit"
-msgstr ""
+msgstr "Подтвердить"
 
-#: .\templates\registration\profile.html:5
+#: .\templates\registration\profile.html:4
+#: .\templates\registration\profile.html:14
 msgid "Profile"
-msgstr ""
+msgstr "Профиль"
 
 #: .\templates\registration\profile.html:31
 #: .\templates\registration\profile.html:35
 msgid "First Name"
-msgstr ""
+msgstr "Имя"
 
 #: .\templates\registration\profile.html:42
 #: .\templates\registration\profile.html:46
 msgid "Last Name"
-msgstr ""
+msgstr "Фамилия"
+
+#: .\templates\registration\profile.html:61
+msgid "Scan History"
+msgstr "История сканирования"
+
+#: .\templates\registration\profile.html:66
+msgid "Image"
+msgstr "Изображение"
 
 #: .\templates\registration\profile.html:68
-msgid "Order History"
-msgstr ""
+msgid "Recognition"
+msgstr "Распознавание"
+
+#: .\templates\registration\profile.html:69
+msgid "Link"
+msgstr "Ссылка"
 
 #: .\templates\registration\profile.html:73
-msgid "Product"
-msgstr ""
+msgid "Remove all"
+msgstr "Удалить все"
 
-#: .\templates\registration\profile.html:74
-msgid "Price per 1"
-msgstr ""
-
-#: .\templates\registration\profile.html:75
-msgid "Quantity"
-msgstr ""
-
-#: .\templates\registration\profile.html:76
-msgid "Date"
-msgstr ""
-
-#: .\templates\registration\profile.html:105
-msgid "NO items to display"
-msgstr ""
-
-#: .\templates\registration\profile.html:115
-msgid "first"
-msgstr ""
-
-#: .\templates\registration\profile.html:116
-msgid "previous"
-msgstr ""
-
-#: .\templates\registration\profile.html:120
-msgid "Page"
-msgstr ""
-
-#: .\templates\registration\profile.html:120
-msgid "of"
-msgstr ""
-
-#: .\templates\registration\profile.html:124
-msgid "next"
-msgstr ""
-
-#: .\templates\registration\profile.html:125
-msgid "last"
-msgstr ""
+#: .\templates\registration\profile.html:95
+msgid "More information"
+msgstr "Больше информации"
 
 #: .\templates\registration\register.html:11
 msgid "Sign Up"
-msgstr ""
+msgstr "Зарегестрироваться"
 
 #: .\templates\registration\register.html:38
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: .\templates\registration\register.html:43
 msgid "Confirm Password"
-msgstr ""
+msgstr "Подтвердите пароль"
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:220

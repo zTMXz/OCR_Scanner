@@ -16,10 +16,10 @@
         <h1 class="promo" style="text-align: center; margin-bottom: 30px">{% trans 'Succesfully uploaded' %}: {{ scanner.description }}</h1>
 
         <div class="scan-border">
-            <h3 style="text-align: center"> Your image </h3>
+            <h3 style="text-align: center"> {% trans 'Your image' %} </h3>
             <img class="scan-img" src="{{ scanner.image.url }}" alt="connect">
 
-            <h3 style="text-align: center"> Recognition result </h3>
+            <h3 style="text-align: center"> {% trans 'Recognition result' %} </h3>
             <textarea class="text-area" cols="70" rows="10" spellcheck="false"> {{ scanner.recognition }}</textarea>
 
             <table class="table ph-ch-table">
