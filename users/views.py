@@ -90,7 +90,7 @@ class Profile(View):
 def delete_one(request, scan_id):
     item = Scanner.objects.get(id=scan_id)
     item.delete()
-    return redirect('profile')
+    return redirect(request.META.get('HTTP_REFERER'))
 
 def delete_all(request):
     Scanner.objects.filter(user=request.user).delete()
