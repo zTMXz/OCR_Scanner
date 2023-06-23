@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.views.generic import CreateView, DetailView
 
 from .forms import ScannerForm
@@ -27,15 +27,6 @@ class ImageUploadDetail(DetailView):
     template_name = 'scanner/scan_success.html'
     model = Scanner
 
-
     def get_object(self, **kwargs):
         id_ = self.kwargs.get('id')
         return get_object_or_404(Scanner, id=id_)
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(ImageUploadDetail, self).get_context_data(**kwargs)
-    #     phrase = self.object.recognition_extended
-    #     ph = [line.split('->')[0].strip() for line in phrase.split('\n')]
-    #     chance = [line.split('->')[1].strip() for line in phrase.split('\n')]
-    #     context['phrase_chance'] = zip(ph, chance)
-    #     return context
