@@ -27,6 +27,14 @@
     width: 50%
 }
 
+.print-link {
+    display: flex;
+    justify-content: center;
+
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
 .text-area {
     display: flex;
     justify-content: center;
@@ -35,7 +43,8 @@
     max-height: 300px;
 
     border: 0;
-    border-radius: 15px
+    border-radius: 15px;
+    word-wrap: break-word;
 }
 
 .btn.btn-success {

@@ -5,6 +5,9 @@
 
 {% block style_css %}
     <link rel="stylesheet" href="{% static 'scanner/css/scan_succcess_css.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -22,11 +25,22 @@
                 <div class="wrapper-right">
                     <h3 style="text-align: center"> {% trans 'Clean image' %} </h3>
                     <img class="scan-img" src="{{ scanner.image.url }}" alt="connect">
+                    <a class="print-link" href="{% url 'scanner:image_print' id=scanner.id %}">
+                        <button class="btn btn-success">
+                            {% trans 'Print' %}
+                            <i class="fa fa-print" style="padding-left: 7px; padding-top: 5px"></i>
+                        </button>
+                    </a>
                 </div>
             </div>
 
             <h3 style="text-align: center"> {% trans 'Recognition result' %} </h3>
-            <textarea class="text-area" cols="70" rows="10" spellcheck="false"> {{ scanner.recognition }}</textarea>
+            <textarea class="text-area" cols="70" rows="10" spellcheck="false"
+                      id="myTextArea"> {{ scanner.recognition }}</textarea>
+            <button class="btn btn-success" onclick="saveAsPDF()" style="margin-bottom: 20px">
+                {% trans 'Save as PDF' %}
+                <i class="bi bi-filetype-pdf" style="padding-left: 7px"></i>
+            </button>
 
             <h3 style="text-align: center">{% trans 'Want to upload more' %}?</h3>
             <a href="{% url 'scanner:image_upload' %}" style="text-decoration: none">
@@ -34,8 +48,20 @@
                     {% trans 'Upload' %}
                 </button>
             </a>
-
         </div>
 
     </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function saveAsPDF() {
+            var text = document.getElementById('myTextArea').value;
+            var doc = new jsPDF();
+            var textLines = doc.splitTextToSize(text, 180);
+
+            doc.text(textLines, 10, 10);
+            doc.save('myPDF.pdf');
+        }
+    </script>
 {% endblock %}

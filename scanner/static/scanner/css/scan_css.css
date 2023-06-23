@@ -18,7 +18,7 @@
 
 .scan-border {
     display: flex;
-    justify-content: center; /* Центрование элементов */
+    justify-content: center;
     margin: auto;
     padding: 40px 0 20px 0;
 
