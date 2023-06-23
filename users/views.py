@@ -2,10 +2,11 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
 
 from users.forms import UserCreationForm, UserUpdateForm
 from scanner.models import Scanner
-from users.send_message import send_message
+from users.send_message import create_email
 
 import os
 
@@ -39,7 +40,8 @@ class Register(View):
 
             if os.environ.get('EMAIL_HOST_USER', default=None):
                 email_host_user = os.environ.get('EMAIL_HOST_USER')
-                send_message(username, password, email, email_host_user)
+                send_mail(subject='Successful Registration Message', message=create_email(username, password),
+                          recipient_list=[email], from_email=email_host_user)
 
             return_page = redirect('home')
 
