@@ -22,23 +22,23 @@
             <h3 style="text-align: center"> {% trans 'Recognition result' %} </h3>
             <textarea class="text-area" cols="70" rows="10" spellcheck="false"> {{ scanner.recognition }}</textarea>
 
-            <table class="table ph-ch-table">
-                <thead>
-                <tr>
-                    <th class="col-md-6" style="padding-left: 45px">{% trans 'Phrase' %}</th>
-                    <th class="col-md-2">{% trans 'Accuracy' %}</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for p, c in phrase_chance %}
-                    <tr>
-                        <td class="col-md-6" style="padding-left: 45px">{{ p }}</td>
-                        <td class="col-md-2">{{ c }}</td>
-                    </tr>
-                {% endfor %}
-
-                </tbody>
-            </table>
+{#            <table class="table ph-ch-table">#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th class="col-md-6" style="padding-left: 45px">{% trans 'Phrase' %}</th>#}
+{#                    <th class="col-md-2">{% trans 'Accuracy' %}</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                {% for p, c in phrase_chance %}#}
+{#                    <tr>#}
+{#                        <td class="col-md-6" style="padding-left: 45px">{{ p }}</td>#}
+{#                        <td class="col-md-2">{{ c }}</td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{##}
+{#                </tbody>#}
+{#            </table>#}
         </div>
 
     </div>

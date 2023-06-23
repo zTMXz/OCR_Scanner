@@ -18,14 +18,24 @@
     display: flex;
     justify-content: center;
     margin: 10px auto 25px auto;
+    padding: 10px;
     max-height:300px;
+
+    border: 0;
+    border-radius: 15px
 }
 
-.ph-ch-table {
-    margin: 55px auto;
-    width: 80% !important;
-    padding: 15px;
+/*.ph-ch-table {*/
+/*    margin: 55px auto;*/
+/*    width: 80% !important;*/
+/*    padding: 15px;*/
 
-    background-color: #fff;
-    border-radius: 15px;
+/*    background-color: #fff;*/
+/*    border-radius: 15px;*/
+/*}*/
+
+textarea:active, textarea:hover, textarea:focus {
+    border: 0;
+    box-shadow: none !important;
+    outline: none !important;
 }
