@@ -15,6 +15,7 @@
 
         <h1 class="promo" style="text-align: center; margin-bottom: 30px">{% trans 'Scan your documents here' %}</h1>
 
+        {% if user.is_authenticated %}
         <div class="scan-border">
             <form method="post" enctype="multipart/form-data"> {% csrf_token %}
                 <label for="id_description" class="form-label">{% trans 'Description' %}:</label>
@@ -44,6 +45,11 @@
                 </div>
             </div>
         </div>
+    {% else %}
+        <meta http-equiv="refresh" content="2;URL={% url 'login' %}"/>
+        <h3>{% trans 'You are not logged in, redirecting' %}..</h3>
+    {% endif %}
+
     </div>
 {% endblock %}
 
