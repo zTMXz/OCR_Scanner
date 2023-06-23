@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-22 14:47+0300\n"
+"POT-Creation-Date: 2023-06-23 13:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,37 +24,53 @@ msgstr ""
 msgid "Scan docs"
 msgstr "Скан документов"
 
-#: .\scanner\templates\scanner\scan.html:16 .\templates\home.html:15
+#: .\scanner\templates\scanner\scan.html:16 .\templates\home.html:14
 msgid "Scan your documents here"
 msgstr "Отсканируйте ваши документы здесь"
 
-#: .\scanner\templates\scanner\scan.html:20
+#: .\scanner\templates\scanner\scan.html:21
 #: .\templates\registration\profile.html:67
 msgid "Description"
 msgstr "Описание"
 
-#: .\scanner\templates\scanner\scan.html:22
+#: .\scanner\templates\scanner\scan.html:23
 msgid "Example: important contract"
 msgstr "Например: важный контракт"
 
-#: .\scanner\templates\scanner\scan.html:24
+#: .\scanner\templates\scanner\scan.html:25
 msgid "Upload your photo"
 msgstr "Загрузите свое фото"
 
-#: .\scanner\templates\scanner\scan.html:28
+#: .\scanner\templates\scanner\scan.html:29
+msgid "Choose language"
+msgstr "Выберите язык"
+
+#: .\scanner\templates\scanner\scan.html:30
+msgid "English"
+msgstr "Английский"
+
+#: .\scanner\templates\scanner\scan.html:31
+msgid "Russian"
+msgstr "Русский"
+
+#: .\scanner\templates\scanner\scan.html:35
+#: .\scanner\templates\scanner\scan_success.html:34
 msgid "Upload"
 msgstr "Загрузить"
 
-#: .\scanner\templates\scanner\scan.html:38
+#: .\scanner\templates\scanner\scan.html:45
 msgid "Loading"
 msgstr "Загрузка"
 
-#: .\scanner\templates\scanner\scan_success.html:4 .\templates\base.html:39
-#: .\templates\home.html:4
+#: .\scanner\templates\scanner\scan.html:56
+msgid "You are not logged in, redirecting"
+msgstr "Вы не авторизованы, перенапрявляем"
+
+#: .\scanner\templates\scanner\scan_success.html:4 .\templates\home.html:4
 msgid "Home"
 msgstr "Главная"
 
-#: .\scanner\templates\scanner\scan_success.html:16
+#: .\scanner\templates\scanner\scan_success.html:14
 msgid "Succesfully uploaded"
 msgstr "Успешно загружено"
 
@@ -62,35 +78,35 @@ msgstr "Успешно загружено"
 msgid "Your image"
 msgstr "Ваше изображение"
 
-#: .\scanner\templates\scanner\scan_success.html:22
+#: .\scanner\templates\scanner\scan_success.html:23
+msgid "Clear image"
+msgstr "Чистое изображение"
+
+#: .\scanner\templates\scanner\scan_success.html:28
 msgid "Recognition result"
 msgstr "Результат распознавания"
 
-#: .\scanner\templates\scanner\scan_success.html:28
-msgid "Phrase"
-msgstr "Фрагмент"
-
-#: .\scanner\templates\scanner\scan_success.html:29
-msgid "Accuracy"
-msgstr "Точность"
+#: .\scanner\templates\scanner\scan_success.html:31
+msgid "Want to upload more"
+msgstr "Хотите загрузить еще?"
 
 #: .\templates\base.html:20
 msgid "DockieScanner"
 msgstr "ДокиСканер"
 
-#: .\templates\base.html:43
+#: .\templates\base.html:37
 msgid "Scan"
 msgstr "Сканер"
 
-#: .\templates\base.html:64
+#: .\templates\base.html:58
 msgid "Settings"
 msgstr "Настройки"
 
-#: .\templates\base.html:65
+#: .\templates\base.html:59
 msgid "Sign Out"
 msgstr "Выйти"
 
-#: .\templates\base.html:69
+#: .\templates\base.html:63
 msgid "Admin Panel"
 msgstr "Админ панель"
 
@@ -251,3 +267,9 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Phrase"
+#~ msgstr "Фрагмент"
+
+#~ msgid "Accuracy"
+#~ msgstr "Точность"
