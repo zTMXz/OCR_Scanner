@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 
 from users.forms import UserCreationForm, UserUpdateForm
 from scanner.models import Scanner
-from users.send_message import create_email
+from users.mail_utils import create_email
 
 import os
 

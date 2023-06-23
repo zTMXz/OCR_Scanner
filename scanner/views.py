@@ -29,3 +29,12 @@ class ImageUploadDetail(DetailView):
     def get_object(self, **kwargs):
         id_ = self.kwargs.get('id')
         return get_object_or_404(Scanner, id=id_)
+
+
+class ImagePrint(DetailView):
+    template_name = 'scanner/print_scan.html'
+    model = Scanner
+
+    def get_object(self, **kwargs):
+        id_ = self.kwargs.get('id')
+        return get_object_or_404(Scanner, id=id_)
