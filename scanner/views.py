@@ -12,8 +12,7 @@ class ImageUpload(CreateView):
 
     def form_valid(self, form):
         img_obj = form.instance.image
-        lang = 'en'
-
+        lang = form.instance.lang
         form.instance.user = self.request.user
         form.save()
 

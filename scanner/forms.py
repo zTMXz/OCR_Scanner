@@ -7,4 +7,5 @@ class ScannerForm(forms.ModelForm):
 
     class Meta:
         model = Scanner
-        fields = ('description', 'image')
+        fields = ('description', 'image', 'lang')
+        widgets = {'lang': forms.Select()}

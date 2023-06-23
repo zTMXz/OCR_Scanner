@@ -16,39 +16,45 @@
         <h1 class="promo" style="text-align: center; margin-bottom: 30px">{% trans 'Scan your documents here' %}</h1>
 
         {% if user.is_authenticated %}
-        <div class="scan-border">
-            <form method="post" enctype="multipart/form-data"> {% csrf_token %}
-                <label for="id_description" class="form-label">{% trans 'Description' %}:</label>
-                <input class="form-control input-field" type="text" name="description" maxlength="255"
-                       id="id_description" placeholder="{% trans 'Example: important contract' %}">
+            <div class="scan-border">
+                <form method="post" enctype="multipart/form-data"> {% csrf_token %}
+                    <label for="id_description" class="form-label">{% trans 'Description' %}:</label>
+                    <input class="form-control input-field" type="text" name="description" maxlength="255"
+                           id="id_description" placeholder="{% trans 'Example: important contract' %}">
 
-                <label for="id_image" class="form-label">{% trans 'Upload your photo' %}:</label>
-                <input class="form-control input-field" type="file" name="image" accept="image/*" id="id_image">
+                    <label for="id_image" class="form-label">{% trans 'Upload your photo' %}:</label>
+                    <input class="form-control input-field" type="file" name="image" accept="image/*" id="id_image">
 
-                <button class="btn btn-success" type="submit" id="add-button" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">{% trans 'Upload' %}</button>
-            </form>
-        </div>
+                    <select class="form-select" id="id_lang" name="lang">
+                        <option selected>{% trans 'Choose language' %}</option>
+                        <option value="en">{% trans 'English' %}</option>
+                        <option value="ru">{% trans 'Russian' %}</option>
+                    </select>
 
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-             aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header" style="display: flex; justify-content: center">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">{% trans 'Loading' %}..</h1>
-                    </div>
+                    <button class="btn btn-success" type="submit" id="add-button" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">{% trans 'Upload' %}</button>
+                </form>
+            </div>
 
-                    <div class="modal-body" style="display: flex; justify-content: center">
-                        <div id="loading-icon"></div>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="display: flex; justify-content: center">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">{% trans 'Loading' %}..</h1>
+                        </div>
+
+                        <div class="modal-body" style="display: flex; justify-content: center">
+                            <div id="loading-icon"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {% else %}
-        <meta http-equiv="refresh" content="2;URL={% url 'login' %}"/>
-        <h3>{% trans 'You are not logged in, redirecting' %}..</h3>
-    {% endif %}
+        {% else %}
+            <meta http-equiv="refresh" content="2;URL={% url 'login' %}"/>
+            <h3>{% trans 'You are not logged in, redirecting' %}..</h3>
+        {% endif %}
 
     </div>
 {% endblock %}
