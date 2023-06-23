@@ -11,7 +11,20 @@
     display: flex;
     justify-content: center;
     margin: 10px auto 25px auto;
-    max-height:300px
+    max-height: 200px
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.wrapper-left{
+    width: 50%
+}
+
+.wrapper-right{
+    width: 50%
 }
 
 .text-area {
@@ -19,20 +32,18 @@
     justify-content: center;
     margin: 10px auto 25px auto;
     padding: 10px;
-    max-height:300px;
+    max-height: 300px;
 
     border: 0;
     border-radius: 15px
 }
 
-/*.ph-ch-table {*/
-/*    margin: 55px auto;*/
-/*    width: 80% !important;*/
-/*    padding: 15px;*/
+.btn.btn-success {
+    display: flex;
+    margin: auto;
 
-/*    background-color: #fff;*/
-/*    border-radius: 15px;*/
-/*}*/
+    background-color: #1d9444;
+}
 
 textarea:active, textarea:hover, textarea:focus {
     border: 0;
