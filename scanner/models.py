@@ -16,7 +16,7 @@ class Scanner(models.Model):
     image = models.ImageField(verbose_name='Изображение', upload_to=get_image_path)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recognition = models.TextField(blank=True)
-    recognition_extended = models.TextField(blank=True)
+    # recognition_extended = models.TextField(blank=True)
 
     def __str__(self):
         return ' '.join([self.user.username, self.description[:11]])
