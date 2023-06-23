@@ -1,17 +1,13 @@
 from django.contrib.auth import authenticate, login
-from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
 
 from users.forms import UserCreationForm, UserUpdateForm
 from scanner.models import Scanner
+from users.send_message import send_message
 
 import os
-
-
-if os.environ.get('EMAIL_HOST_USER', default=None):
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 
 
 class Register(View):
@@ -26,6 +22,12 @@ class Register(View):
     def post(self, request):
         form = UserCreationForm(request.POST)
 
+        context = {
+            'form': form
+        }
+
+        return_page = render(request, self.template_name, context)
+
         if form.is_valid():
             form.save()
 
@@ -33,30 +35,15 @@ class Register(View):
             password = form.cleaned_data.get('password1')
             email = form.cleaned_data.get('email')
             user = authenticate(username=username, password=password)
-            print(form)
             login(request, user)
-            print(EMAIL_HOST_USER)
 
-            send_mail(subject='Successful Registration Message',
-message= f"""
-You have successfully registered on DockieScanner
-Your login details:
-===============================
-    username: {username}
-    password: {password}
-===============================
-""",
-                      recipient_list=[email],
-                      from_email=EMAIL_HOST_USER
-                      )
+            if os.environ.get('EMAIL_HOST_USER', default=None):
+                email_host_user = os.environ.get('EMAIL_HOST_USER')
+                send_message(username, password, email, email_host_user)
 
+            return_page = redirect('home')
 
-            return redirect('home')
-
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
+        return return_page
 
 
 class Profile(View):
@@ -92,10 +79,7 @@ def delete_one(request, scan_id):
     item.delete()
     return redirect(request.META.get('HTTP_REFERER'))
 
+
 def delete_all(request):
     Scanner.objects.filter(user=request.user).delete()
     return redirect('profile')
-
-
-
-
