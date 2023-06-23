@@ -36,7 +36,6 @@ a:active, a:focus {
     box-shadow: 0 0 0 0 rgba(29, 148, 68, 1) !important;
 }
 
-
 form.hide-submit input[type="submit"] {
     display: none;
 }
