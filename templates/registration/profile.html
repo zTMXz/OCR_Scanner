@@ -46,6 +46,10 @@
                                    id="id_last_name" placeholder="{% trans "Last Name" %}"
                                    value={{ user.last_name }}>
                         </div>
+                        <div class="col-sm-4">
+                            <a href="{% url 'password_reset' %}" style="text-decoration: none; color: #5b80b2">{% trans 'Forgot password' %}?</a>
+                        </div>
+
                     </div>
                     <div class="btn-submit">
                         <button type="submit" class="btn btn-info btn-outline-secondary"
