@@ -137,3 +137,4 @@ dmypy.json
 .venv3-9/
 .venv3-9/Scripts/
 .venv3-9/share/
+/venv3-9/
