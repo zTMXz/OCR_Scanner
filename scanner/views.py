@@ -17,10 +17,10 @@ class ImageUpload(CreateView):
         form.instance.user = self.request.user
         form.save()
 
-        form.instance.recognition = scan_image(img_obj.url, lang)
+        form.instance.image_denoised = denoise_image(img_obj.url)
         form.save()
 
-        form.instance.image_denoised = denoise_image(img_obj.url)
+        form.instance.recognition = scan_image(form.instance.image_denoised, lang)
         form.save()
 
         return super().form_valid(form)
