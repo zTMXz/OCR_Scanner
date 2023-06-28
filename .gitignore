@@ -134,5 +134,6 @@ dmypy.json
 .pyre/
 /media/
 .idea/
-/venv3-9/
-/venv3-9/Scripts/
+.venv3-9/
+.venv3-9/Scripts/
+.venv3-9/share/
