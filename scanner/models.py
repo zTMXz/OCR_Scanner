@@ -17,6 +17,7 @@ class Scanner(models.Model):
 
     description = models.TextField(blank=True)
     image = models.ImageField(verbose_name='Image', upload_to=get_image_path)
+    image_denoised = models.CharField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recognition = models.TextField(blank=True)
     lang = models.CharField(max_length=24, choices=choices, default='English')

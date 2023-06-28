@@ -23,9 +23,10 @@ def denoise_image(path: str):
     model = tf.keras.models.load_model(path_to_model, compile=False)
     model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
 
-    size = Image.open(path).size
+    path_img = os.path.abspath(os.curdir) + path
+    size = Image.open(path_img).size
 
-    predict = [process_image(path)]
+    predict = [process_image(path_img)]
     result = model.predict(np.asarray(predict), batch_size=16)
 
     plt.plot(1, 2, 2)
@@ -33,8 +34,10 @@ def denoise_image(path: str):
     plt.yticks([])
     plt.imshow(result[0][:, :, 0], cmap='gray')
 
-    plt.savefig('1234.png', transparent= True)
-    Image.open('1234.png').resize(size).save('1234.png')
+    path_img = path_img + '_denoised.png'
 
-    return 0
+    plt.savefig(path_img, transparent=True)
+    Image.open(path_img).resize(size).save(path_img)
+
+    return path+'_denoised.png'
 

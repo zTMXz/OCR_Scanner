@@ -4,6 +4,7 @@ from django.views.generic import CreateView, DetailView
 from .forms import ScannerForm
 from .models import Scanner
 from scanner.text_recognition import scan_image
+from scanner.denoising import denoise_image
 
 
 class ImageUpload(CreateView):
@@ -17,6 +18,9 @@ class ImageUpload(CreateView):
         form.save()
 
         form.instance.recognition = scan_image(img_obj.url, lang)
+        form.save()
+
+        form.instance.image_denoised = denoise_image(img_obj.url)
         form.save()
 
         return super().form_valid(form)

@@ -24,7 +24,7 @@
                 </div>
                 <div class="wrapper-right">
                     <h3 style="text-align: center"> {% trans 'Clean image' %} </h3>
-                    <img class="scan-img" src="{{ scanner.image.url }}" alt="connect">
+                    <img class="scan-img" src="{{ scanner.image_denoised }}" alt="connect">
                     <a class="print-link" href="{% url 'scanner:image_print' id=scanner.id %}">
                         <button class="btn btn-success">
                             {% trans 'Print' %}
