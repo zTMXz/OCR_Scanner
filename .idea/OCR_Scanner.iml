@@ -15,6 +15,10 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/venv3-9/Include" />
+      <excludeFolder url="file://$MODULE_DIR$/venv3-9/Lib" />
+      <excludeFolder url="file://$MODULE_DIR$/media" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.9 (OCR_Scanner)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
