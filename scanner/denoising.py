@@ -17,7 +17,7 @@ def process_image(path):
     return img
 
 def denoise_image(path: str):
-    path_to_model = os.path.abspath(os.curdir) + '\model_learning\model_full.h5'
+    path_to_model = os.path.abspath(os.curdir) + '\model_learning\model_full_aug.h5'
     model = tf.keras.models.load_model(path_to_model, compile=False)
     model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
 
