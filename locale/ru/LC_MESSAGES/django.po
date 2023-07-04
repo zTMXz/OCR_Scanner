@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-23 14:00+0300\n"
+"POT-Creation-Date: 2023-07-04 11:52+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,45 +24,45 @@ msgstr ""
 msgid "Scan docs"
 msgstr "Скан документов"
 
-#: .\scanner\templates\scanner\scan.html:16 .\templates\home.html:14
+#: .\scanner\templates\scanner\scan.html:16
 msgid "Scan your documents here"
 msgstr "Отсканируйте ваши документы здесь"
 
 #: .\scanner\templates\scanner\scan.html:21
-#: .\templates\registration\profile.html:67
+#: .\templates\registration\profile.html:71
 msgid "Description"
 msgstr "Описание"
 
-#: .\scanner\templates\scanner\scan.html:23
+#: .\scanner\templates\scanner\scan.html:24
 msgid "Example: important contract"
 msgstr "Например: важный контракт"
 
-#: .\scanner\templates\scanner\scan.html:25
+#: .\scanner\templates\scanner\scan.html:26
 msgid "Upload your photo"
 msgstr "Загрузите свое фото"
 
-#: .\scanner\templates\scanner\scan.html:29
+#: .\scanner\templates\scanner\scan.html:31
 msgid "Choose language"
 msgstr "Выберите язык"
 
-#: .\scanner\templates\scanner\scan.html:30
+#: .\scanner\templates\scanner\scan.html:32
 msgid "English"
 msgstr "Английский"
 
-#: .\scanner\templates\scanner\scan.html:31
+#: .\scanner\templates\scanner\scan.html:33
 msgid "Russian"
 msgstr "Русский"
 
-#: .\scanner\templates\scanner\scan.html:35
-#: .\scanner\templates\scanner\scan_success.html:34
+#: .\scanner\templates\scanner\scan.html:37
+#: .\scanner\templates\scanner\scan_success.html:48
 msgid "Upload"
 msgstr "Загрузить"
 
-#: .\scanner\templates\scanner\scan.html:45
+#: .\scanner\templates\scanner\scan.html:47
 msgid "Loading"
 msgstr "Загрузка"
 
-#: .\scanner\templates\scanner\scan.html:56
+#: .\scanner\templates\scanner\scan.html:58
 msgid "You are not logged in, redirecting"
 msgstr "Вы не авторизованы, перенапрявляем"
 
@@ -70,23 +70,32 @@ msgstr "Вы не авторизованы, перенапрявляем"
 msgid "Home"
 msgstr "Главная"
 
-#: .\scanner\templates\scanner\scan_success.html:14
+#: .\scanner\templates\scanner\scan_success.html:17
 msgid "Succesfully uploaded"
 msgstr "Успешно загружено"
 
-#: .\scanner\templates\scanner\scan_success.html:19
+#: .\scanner\templates\scanner\scan_success.html:22
 msgid "Your image"
 msgstr "Ваше изображение"
 
-#: .\scanner\templates\scanner\scan_success.html:23
+#: .\scanner\templates\scanner\scan_success.html:26
 msgid "Clean image"
 msgstr "Чистое изображение"
 
-#: .\scanner\templates\scanner\scan_success.html:28
+#: .\scanner\templates\scanner\scan_success.html:30
+msgid "Print"
+msgstr "Печать"
+
+#: .\scanner\templates\scanner\scan_success.html:37
+#: .\templates\registration\profile.html:72
 msgid "Recognition result"
 msgstr "Результат распознавания"
 
-#: .\scanner\templates\scanner\scan_success.html:31
+#: .\scanner\templates\scanner\scan_success.html:41
+msgid "Save as PDF"
+msgstr "Сохранить в PDF"
+
+#: .\scanner\templates\scanner\scan_success.html:45
 msgid "Want to upload more"
 msgstr "Хотите загрузить еще?"
 
@@ -110,6 +119,59 @@ msgstr "Выйти"
 msgid "Admin Panel"
 msgstr "Админ панель"
 
+#: .\templates\home.html:21
+msgid "About service"
+msgstr "О сервисе"
+
+#: .\templates\home.html:23
+msgid "DockieScanner - service to scan your dirty documents and more."
+msgstr ""
+"DockieScanner - это сервис, для сканирования ваших грязных документов и не "
+"только."
+
+#: .\templates\home.html:24
+msgid "We provide an opportunity for:"
+msgstr "Мы предоставляем возможность по:"
+
+#: .\templates\home.html:27
+msgid "Scanning"
+msgstr "Сканированию"
+
+#: .\templates\home.html:28
+msgid "Cleaning"
+msgstr "Очищению"
+
+#: .\templates\home.html:29
+msgid "Recognition"
+msgstr "Распознаванию"
+
+#: .\templates\home.html:32
+msgid ""
+"Then, you can immediately print the resulting image or copy the resulting "
+"text"
+msgstr ""
+"Вы сразу сможете распечатать полученное изображение или скопировать "
+"полученный текст"
+
+#: .\templates\home.html:41
+msgid "How to use"
+msgstr "Как работает"
+
+#: .\templates\home.html:43
+msgid ""
+"To use the service, simply upload your image and select the language for it."
+msgstr ""
+"Чтобы воспользоваться сервисом, достаточно просто загрузить ваше изображение "
+"и выбрать язык для него."
+
+#: .\templates\home.html:46
+msgid ""
+"After that, you will receive a cleaned image of the document and you can "
+"immediately print it"
+msgstr ""
+"После этого вы получите очищенное изображение документа и сразу сможете "
+"распечатать его"
+
 #: .\templates\registration\login.html:11
 msgid "Sign In"
 msgstr "Вход"
@@ -127,6 +189,7 @@ msgid "Sign up"
 msgstr "Регистрация"
 
 #: .\templates\registration\login.html:34
+#: .\templates\registration\profile.html:50
 msgid "Forgot password"
 msgstr "Забыли пароль"
 
@@ -168,7 +231,7 @@ msgid "Password Reset"
 msgstr "Сброс пароля"
 
 #: .\templates\registration\password_reset_form.html:30
-#: .\templates\registration\profile.html:52
+#: .\templates\registration\profile.html:56
 msgid "Submit"
 msgstr "Подтвердить"
 
@@ -187,27 +250,23 @@ msgstr "Имя"
 msgid "Last Name"
 msgstr "Фамилия"
 
-#: .\templates\registration\profile.html:61
+#: .\templates\registration\profile.html:65
 msgid "Scan History"
 msgstr "История сканирования"
 
-#: .\templates\registration\profile.html:66
+#: .\templates\registration\profile.html:70
 msgid "Image"
 msgstr "Изображение"
 
-#: .\templates\registration\profile.html:68
-msgid "Recognition"
-msgstr "Распознавание"
-
-#: .\templates\registration\profile.html:69
+#: .\templates\registration\profile.html:73
 msgid "Link"
 msgstr "Ссылка"
 
-#: .\templates\registration\profile.html:73
+#: .\templates\registration\profile.html:77
 msgid "Remove all"
 msgstr "Удалить все"
 
-#: .\templates\registration\profile.html:95
+#: .\templates\registration\profile.html:99
 msgid "More information"
 msgstr "Больше информации"
 
@@ -223,19 +282,19 @@ msgstr "Пароль"
 msgid "Confirm Password"
 msgstr "Подтвердите пароль"
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:220
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:220
 msgid "The install worked successfully! Congratulations!"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:206
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:206
 #, python-format
 msgid ""
 "View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
 "target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:221
 #, python-format
 msgid ""
 "You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
@@ -244,27 +303,27 @@ msgid ""
 "URLs."
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:229
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:229
 msgid "Django Documentation"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:230
 msgid "Topics, references, &amp; how-to’s"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:238
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:238
 msgid "Tutorial: A Polling App"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:239
 msgid "Get started with Django"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:247
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:247
 msgid "Django Community"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
+#: .\venv39\Lib\site-packages\django\views\templates\default_urlconf.html:248
 msgid "Connect, get help, or contribute"
 msgstr ""
 
