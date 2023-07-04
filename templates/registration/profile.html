@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static i18n %}
-{% load widget_tweaks %}
 
 {% block title %} {% trans 'Profile' %} {% endblock %}
 
@@ -12,98 +11,130 @@
 
 {% block content %}
     <div style="margin-top: 20px;">
-        <h2>Profile</h2>
-        <div class="container-fluid">
+        <h2 style="text-align: center; margin-bottom: 30px">{% trans 'Profile' %}</h2>
+        <div class="inputs">
             {% if user.is_authenticated %}
                 <form action="{% url 'profile' %}" method="post">{% csrf_token %}
                     <div class="row" style="margin-top: 10px">
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label for="Email">Email</label>
                         </div>
                         <div class="col-sm-9" id="Email">
                             <input class="form-control" type="text" id="Email" name="email" readonly
-                                   style="width: 250px; text-align: left; cursor: pointer;"
+                                   style="width: 300px; text-align: left; cursor: pointer;"
                                    value={{ user.email }}>
                         </div>
                     </div>
 
                     <div class="row" style="margin-top: 10px">
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label for="id_first_name">{% trans 'First Name' %}</label>
                         </div>
                         <div class="col-sm-9" id="FirstName">
-                            <input style="width: 250px" class="form-control" type="text" name="first_name"
+                            <input style="width: 300px" class="form-control" type="text" name="first_name"
                                    id="id_first_name" placeholder="{% trans "First Name" %}"
                                    value={{ user.first_name }}>
                         </div>
                     </div>
 
                     <div class="row" style="margin-top: 10px">
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <label for="id_last_name">{% trans 'Last Name' %}</label>
                         </div>
                         <div class="col-sm-9" id="LastName">
-                            <input style="width: 250px" class="form-control" type="text" name="last_name"
+                            <input style="width: 300px" class="form-control" type="text" name="last_name"
                                    id="id_last_name" placeholder="{% trans "Last Name" %}"
                                    value={{ user.last_name }}>
                         </div>
-                    </div>
+                        <div class="col-sm-4">
+                            <a href="{% url 'password_reset' %}" style="text-decoration: none; color: #5b80b2">{% trans 'Forgot password' %}?</a>
+                        </div>
 
-                    <div class="row" style="margin-top: 10px">
-                        <div class="col-sm-3">
-                            <label for=""></label>
-                        </div>
-                        <div class="col-sm-9">
-                            <button type="submit" class="btn btn-info btn-outline-secondary"
-                                    style="background: #1d9444; color: white">{% trans "Submit" %}</button>
-                        </div>
+                    </div>
+                    <div class="btn-submit">
+                        <button type="submit" class="btn btn-info btn-outline-secondary"
+                                style="background: #1d9444; color: white; margin: auto">{% trans "Submit" %}</button>
                     </div>
 
                 </form>
-
-
             {% endif %}
         </div>
 
-        <div>
-            {% if scan_history %}
-                <h2 style="margin-top: 40px">{% trans 'Scan History' %}</h2>
+        {% if scan_history %}
+            <div>
+                <h2 style="margin: 40px 0; text-align: center">{% trans 'Scan History' %}</h2>
 
                 <table class="table" id="table" style="width: 90%; margin: auto">
                     <thead>
                     <tr>
-                        <th class="col-md-4">{% trans 'Image' %}</th>
+                        <th class="col-md-2">{% trans 'Image' %}</th>
                         <th class="col-md-2">{% trans 'Description' %}</th>
-                        <th class="col-md-4">{% trans 'Recognition' %}</th>
+                        <th class="col-md-4">{% trans 'Recognition result' %}</th>
+                        <th class="col-md-2">{% trans 'Link' %}</th>
+                        <th class="col-md-2">
+                            <form method="POST" action="{% url 'delete_all' %}">
+                                {% csrf_token %}
+                                <button type="submit">{% trans 'Remove all' %}</button>
+                            </form>
+                        </th>
                     </tr>
                     </thead>
 
                     <tbody>
-
                     {% for scan in scan_history %}
                         <tr>
-                            <td class="col-md-4">
+                            <td class="col-md-2">
                                 <img class="table-image" src="
                                 {% if scan.image %}
                                     {{ scan.image.url }}
-                                {% endif %}">
+                                {% endif %}" style="width: 300px">
                             </td>
                             <td class="col-md-2">
                                 {{ scan.description }}
                             </td>
-                            <td class="col-md-4">
+                            <td class="col-md-4" style="font-size: 14px">
                                 {{ scan.recognition }}
+                            </td>
+                            <td class="col-md-2">
+                                <a href="{{ scan.get_absolute_url }}"> {% trans 'More information' %} </a>
+                            </td>
+                            <td class="col-md-2">
+                                <form class="hide-submit" method="post" action="{% url 'delete_one' scan_id=scan.id %}">
+                                    {% csrf_token %}
+                                    <label>
+                                        <input style="cursor: pointer" type="submit"/>
+                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink"
+                                             xmlns:svgjs="http://svgjs.com/svgjs"
+                                             width="48" height="48" x="0" y="0" viewBox="0 0 512 512"
+                                             style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+                                            <g>
+                                                <path fill="#525252" d="M256 80h-32V32h-64v48h-32V0h128zm0 0"
+                                                      data-original="#62808c" class="">
+
+                                                </path>
+                                                <path
+                                                        fill="#1d9444"
+                                                        d="M304 512H80c-26.508 0-48-21.492-48-48V128h320v336c0 26.508-21.492 48-48 48zm0 0"
+                                                        data-original="#e76e54" class="">
+                                                </path>
+                                                <path fill="#525252"
+                                                      d="M384 160H0V96c0-17.672 14.328-32 32-32h320c17.672 0 32 14.328 32 32zm0 0"
+                                                      data-original="#77959e"
+                                                      class="">
+                                                </path>
+                                                <path
+                                                        fill="#ffffff"
+                                                        d="M260 260c-6.246-6.246-16.375-6.246-22.625 0L196 301.375 154.625 260c-6.25-6.246-16.379-6.246-22.625 0s-6.246 16.375 0 22.625L173.375 324 132 365.375c-6.246 6.25-6.246 16.379 0 22.625s16.375 6.246 22.625 0L196 346.625 237.375 388c6.25 6.246 16.379 6.246 22.625 0s6.246-16.375 0-22.625L218.625 324 260 282.625c6.246-6.25 6.246-16.379 0-22.625zm0 0"
+                                                        data-original="#ffffff" class="">
+                                                </path>
+                                            </g>
+                                        </svg>
+                                    </label>
+                                </form>
                             </td>
                         </tr>
                     {% endfor %}
-
-                    {#                {% else %}#}
-                    {#                    <tr>#}
-                    {#                        <td class="col-md-12 text-center" colspan="4">#}
-                    {#                            {% trans 'NO items to display' %}#}
-                    {#                        </td>#}
-                    {#                    </tr>#}
-
                     </tbody>
                 </table>
 
@@ -139,8 +170,16 @@
                         </li>
                     </ul>
                 </nav>
-                </div>
-            {% endif %}
-
+            </div>
+        {% endif %}
     </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        let cords = ['scrollX', 'scrollY'];
+        window.addEventListener('unload', e => cords.forEach(cord => localStorage[cord] = window[cord]));
+        window.scroll(...cords.map(cord => localStorage[cord]));
+    </script>
+
 {% endblock %}

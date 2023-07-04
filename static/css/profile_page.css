@@ -1,3 +1,19 @@
+.inputs {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+    padding-left: 110px;
+}
+
+.btn-submit {
+    justify-content: center;
+    display: flex;
+    width: 290px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
 .page-item .page-link {
     color: #076f96;
 }
@@ -18,4 +34,12 @@ input:active, input:focus,
 a:active, a:focus {
     outline: 0 !important;
     box-shadow: 0 0 0 0 rgba(29, 148, 68, 1) !important;
+}
+
+form.hide-submit input[type="submit"] {
+    display: none;
+}
+
+svg {
+    cursor: pointer;
 }

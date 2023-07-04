@@ -1,12 +1,14 @@
 from django.contrib.auth import authenticate, login
-from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.views import View
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
 
-from OCR_Scanner.settings import DEFAULT_FROM_EMAIL
 from users.forms import UserCreationForm, UserUpdateForm
 from scanner.models import Scanner
+from users.mail_utils import create_email
+
+import os
 
 
 class Register(View):
@@ -21,6 +23,12 @@ class Register(View):
     def post(self, request):
         form = UserCreationForm(request.POST)
 
+        context = {
+            'form': form
+        }
+
+        return_page = render(request, self.template_name, context)
+
         if form.is_valid():
             form.save()
 
@@ -28,28 +36,16 @@ class Register(View):
             password = form.cleaned_data.get('password1')
             email = form.cleaned_data.get('email')
             user = authenticate(username=username, password=password)
-            print(form)
             login(request, user)
 
-            send_mail(subject='Successful Registration Message',
-message= f"""
-You have successfully registered on DockieScanner
-Your login details:
-===============================
-    username: {username}
-    password: {password}
-===============================
-""",
-                      recipient_list=[email],
-                      from_email=DEFAULT_FROM_EMAIL
-                      )
+            if os.environ.get('EMAIL_HOST_USER', default=None):
+                email_host_user = os.environ.get('EMAIL_HOST_USER')
+                send_mail(subject='Successful Registration Message', message=create_email(username, password),
+                          recipient_list=[email], from_email=email_host_user)
 
-            return redirect('home')
+            return_page = redirect('home')
 
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
+        return return_page
 
 
 class Profile(View):
@@ -78,3 +74,14 @@ class Profile(View):
         if form.is_valid():
             form.save()
             return redirect('profile')
+
+
+def delete_one(request, scan_id):
+    item = Scanner.objects.get(id=scan_id)
+    item.delete()
+    return redirect(request.META.get('HTTP_REFERER'))
+
+
+def delete_all(request):
+    Scanner.objects.filter(user=request.user).delete()
+    return redirect('profile')

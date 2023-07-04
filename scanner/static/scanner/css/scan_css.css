@@ -1,0 +1,51 @@
+#loading-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1d9444;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.scan-border {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 40px 0 20px 0;
+
+    width: 50%;
+    background-color: #eeeeee;
+    border-radius: 15px;
+}
+
+.input-field {
+    margin-bottom: 15px;
+}
+
+.form-label {
+    margin-bottom: 2px !important;
+    margin-left: 5px;
+
+    font-size: 15px;
+}
+
+.btn.btn-success {
+    display: flex;
+    margin: 25px auto 0 auto;
+
+    background-color: #1d9444;
+}
+
+input:active, input:hover, input:focus {
+    border: 1px solid #1d9444;
+    box-shadow: none !important;
+}

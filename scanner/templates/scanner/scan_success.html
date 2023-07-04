@@ -4,30 +4,64 @@
 {% block title %} {% trans 'Home' %} {% endblock %}
 
 {% block style_css %}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'scanner/css/scan_succcess_css.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 {% endblock %}
 
 {% block content %}
 
     <div class="container">
+        <h1 class="promo"
+            style="text-align: center; margin-bottom: 30px">{% trans 'Succesfully uploaded' %}: {{ scanner.description }}</h1>
 
-        <h1 class="promo" style="text-align: center; margin-bottom: 30px">{% trans 'Scan your documents here' %}</h1>
+        <div class="scan-border">
+            <div class="wrapper">
+                <div class="wrapper-left">
+                    <h3 style="text-align: center"> {% trans 'Your image' %} </h3>
+                    <img class="scan-img" src="{{ scanner.image.url }}" alt="connect">
+                </div>
+                <div class="wrapper-right">
+                    <h3 style="text-align: center"> {% trans 'Clean image' %} </h3>
+                    <img class="scan-img" src="{{ scanner.image_denoised }}" alt="connect">
+                    <a class="print-link" href="{% url 'scanner:image_print' id=scanner.id %} " target="_blank">
+                        <button class="btn btn-success">
+                            {% trans 'Print' %}
+                            <i class="fa fa-print" style="padding-left: 7px; padding-top: 5px"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
 
-        <h3>Succesfully uploaded : {{ scanner.description }}</h3>
-        <img src="{{ scanner.image.url }}" alt="connect" style="max-height:300px">
-        <textarea name="result" cols="40" rows="10" id="id_result"> {{ scanner.recognition }}</textarea>
-        <textarea name="result" cols="40" rows="10" id="id_result" readonly> {{ scanner.recognition_extended }}</textarea>
+            <h3 style="text-align: center"> {% trans 'Recognition result' %} </h3>
+            <textarea class="text-area" cols="70" rows="10" spellcheck="false"
+                      id="myTextArea"> {{ scanner.recognition }}</textarea>
+            <button class="btn btn-success" onclick="saveAsPDF()" style="margin-bottom: 20px">
+                {% trans 'Save as PDF' %}
+                <i class="bi bi-filetype-pdf" style="padding-left: 7px"></i>
+            </button>
 
-        <p> =============================== </p>
-        <p>{{ img }}</p>
+            <h3 style="text-align: center">{% trans 'Want to upload more' %}?</h3>
+            <a href="{% url 'scanner:image_upload' %}" style="text-decoration: none">
+                <button class="btn btn-success">
+                    {% trans 'Upload' %}
+                </button>
+            </a>
+        </div>
 
     </div>
 {% endblock %}
 
 {% block script %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
-            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
-            crossorigin="anonymous"></script>
+    <script>
+        function saveAsPDF() {
+            var text = document.getElementById('myTextArea').value;
+            var doc = new jsPDF();
+            var textLines = doc.splitTextToSize(text, 180);
 
+            doc.text(textLines, 10, 10);
+            doc.save('myPDF.pdf');
+        }
+    </script>
 {% endblock %}
