@@ -15,6 +15,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 import environ
+import logging
 from PIL.ImageOps import scale
 
 env = environ.Env()
@@ -51,7 +52,6 @@ if env.get_value('EMAIL_HOST_USER', default=None):
 if env.get_value('EMAIL_HOST_PASSWORD', default=None):
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-
 # Application definition
 INSTALLED_APPS = [
     "modeltranslation",
@@ -76,6 +76,39 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+
+    'formatters': {
+        'main_format': {
+            'format': "{asctime}-{levelname}-{module}-{filename}-{message}",
+            'style': '{',
+        },
+    },
+
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'main_format'
+        },
+
+        'file': {
+            'class': 'logging.FileHandler',
+            'formatter': 'main_format',
+            'filename': 'information.log',
+        },
+    },
+
+    'loggers': {
+        'main': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 ROOT_URLCONF = "OCR_Scanner.urls"
 
@@ -150,7 +183,7 @@ LANGUAGES = (
     ('en', gettext('English')),
 )
 
-LOCALE_PATHS = (BASE_DIR / 'locale', )
+LOCALE_PATHS = (BASE_DIR / 'locale',)
 
 STATIC_URL = "/static/"
 

@@ -3,8 +3,11 @@ import os
 import cv2
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import logging
 
 from PIL import Image
+
+logger = logging.getLogger('main')
 
 def process_image(path):
     img = cv2.imread(path)
@@ -37,6 +40,8 @@ def denoise_image(path: str):
 
     plt.savefig(path_img, bbox_inches='tight', transparent=True)
     Image.open(path_img).resize(size).save(path_img)
+
+    logger.info('User used denoising')
 
     return path+'_denoised.png'
 

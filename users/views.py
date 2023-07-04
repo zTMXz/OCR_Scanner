@@ -9,6 +9,9 @@ from scanner.models import Scanner
 from users.mail_utils import create_email
 
 import os
+import logging
+
+logger = logging.getLogger('main')
 
 
 class Register(View):
@@ -38,10 +41,14 @@ class Register(View):
             user = authenticate(username=username, password=password)
             login(request, user)
 
+            logger.info('New user registered')
+
             if os.environ.get('EMAIL_HOST_USER', default=None):
                 email_host_user = os.environ.get('EMAIL_HOST_USER')
                 send_mail(subject='Successful Registration Message', message=create_email(username, password),
                           recipient_list=[email], from_email=email_host_user)
+
+                logger.info(f'Sent email to {email}')
 
             return_page = redirect('home')
 
@@ -54,6 +61,8 @@ class Profile(View):
     def get(self, request):
         if not request.user.is_authenticated:
             return redirect("login")
+
+        logger.info('Opening profile page')
 
         scan_history = Scanner.objects.filter(user=request.user).order_by('-id')
         paginator = Paginator(scan_history, 5)
@@ -73,6 +82,7 @@ class Profile(View):
         form = UserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
+            logger.info('Updated profile info')
             return redirect('profile')
 
 
