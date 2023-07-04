@@ -20,19 +20,21 @@
                 <form method="post" enctype="multipart/form-data"> {% csrf_token %}
                     <label for="id_description" class="form-label">{% trans 'Description' %}:</label>
                     <input class="form-control input-field" type="text" name="description" maxlength="255"
-                           id="id_description" placeholder="{% trans 'Example: important contract' %}">
+                           id="id_description" onkeyup="checkForm()"
+                           placeholder="{% trans 'Example: important contract' %}">
 
                     <label for="id_image" class="form-label">{% trans 'Upload your photo' %}:</label>
-                    <input class="form-control input-field" type="file" name="image" accept="image/*" id="id_image">
+                    <input class="form-control input-field" type="file" name="image" accept="image/*" id="id_image"
+                           onchange="checkForm()">
 
-                    <select class="form-select" id="id_lang" name="lang">
-                        <option selected>{% trans 'Choose language' %}</option>
+                    <select class="form-select" id="id_lang" name="lang" onchange="checkForm()" required>
+                        <option value="None" selected>{% trans 'Choose language' %}</option>
                         <option value="en">{% trans 'English' %}</option>
                         <option value="ru">{% trans 'Russian' %}</option>
                     </select>
 
                     <button class="btn btn-success" type="submit" id="add-button" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">{% trans 'Upload' %}</button>
+                            data-bs-target="#staticBackdrop" disabled>{% trans 'Upload' %}</button>
                 </form>
             </div>
 
@@ -62,5 +64,16 @@
 {% block script %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
             integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+    </script>
+    <script>
+        function checkForm() {
+            var desc = document.getElementById('id_description').value;
+            var img = document.getElementById('id_image').value;
+            var lang = document.getElementById('id_lang').value;
+            var submitBtn = document.getElementById('add-button');
+
+            submitBtn.disabled = !(desc && img && lang !== 'None');
+        }
+    </script>
 {% endblock %}
